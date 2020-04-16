@@ -8,8 +8,7 @@ import { CourseComponent } from './course/course.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CoursesComponents,
-    CourseComponent
+    CoursesComponents
   ],
   imports: [
     BrowserModule
