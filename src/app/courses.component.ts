@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { CoursesService } from './courses.services';
 
 
 @Component({
@@ -16,5 +17,9 @@ export class CoursesComponents {
         return this.title;
     }
     courses;
+
+    constructor(service: CoursesService){
+        this.courses = service.getCourses();
+    }
 
 }
