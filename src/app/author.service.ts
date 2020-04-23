@@ -6,6 +6,6 @@ import { Injectable } from '@angular/core';
 
 export class AuthorService {
   getAuthors() {
-      return ["course1", "course2", "course3"];
+      return ["author1", "author2", "author3"];
   }
 }

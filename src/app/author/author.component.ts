@@ -1,24 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { AuthorService } from '../author.service';
 
 
 @Component({
     selector: 'author', //<author>
-    template: `<h2>{{ getTitle() }}</h2>
-    <li *ngFor="let author of authors">
-    {{author}}
-</li>
-    `
+    templateUrl: './author.component.html',
+    styleUrls: ['./author.component.css']
 })
-export class AuthorComponent {
-    title = "List of authors";
-
-    getTitle() {
-        return this.title;
-    }
+export class AuthorComponent implements OnInit{
     authors;
 
     constructor(service: AuthorService){
-        this.authors = service.getAuthors
+        this.authors = service.getAuthors();
+    }
+
+    ngOnInit(){
+
     }
 }
