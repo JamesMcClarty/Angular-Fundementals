@@ -13,21 +13,38 @@ import { CoursesService } from './courses.services';
             <td [attr.colspan]="colSpan"></td>
         </tr>
     </table>
-    <button class="btn btn-primary" [style.backgroundColor] ="isActive ? 'blue' : 'white'">Save</button>
+    <div (click) = onDivClicked()>
+    <button (click) = "onSave($event)" class="btn btn-primary" [style.backgroundColor] ="isActive ? 'blue' : 'white'">Save</button>
+    </div>
+    <input (keyup.enter)="onKeyUp()"/>
     `
 })
 export class CoursesComponents {
     title = "List of courses";
     colSpan = 2;
     isActive = true;
+    courses;
+
+    onDivClicked(){
+        console.log("Div was clicked");
+    }
 
     getTitle() {
         return this.title;
     }
-    courses;
+    
 
     constructor(service: CoursesService){
         this.courses = service.getCourses();
     }
 
+    onSave($event){
+        //Prevents events from bubbling up.
+        $event.stopPropagation();
+        console.log("Button was pressed.", $event);
+    }
+
+    onKeyUp(){
+        console.log("Enter is pressed");
+    }
 }
